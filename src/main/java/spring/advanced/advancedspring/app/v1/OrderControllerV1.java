@@ -1,17 +1,28 @@
-package spring.advanced.advancedspring.app.v0;
+package spring.advanced.advancedspring.app.v1;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
+import spring.advanced.advancedspring.trace.TraceStatus;
+import spring.advanced.advancedspring.trace.hellotrace.HelloTraceV1;
 
 @RestController
 @RequiredArgsConstructor
-public class OrderControllerV0 {
-    private final OrderServiceV0 orderService;
+public class OrderControllerV1 {
+    private final OrderServiceV1 orderService;
+    private final HelloTraceV1 trace;
 
-    @GetMapping("/v0/request")
+    @GetMapping("/v1/request")
     public String request(String itemId) {
-        orderService.orderItem(itemId);
-        return "ok";
+        TraceStatus status = null;
+        try {
+            status = trace.begin("OrderController.request()");
+            orderService.orderItem(itemId);
+            trace.end(status);
+            return "ok";
+        } catch (Exception e) {
+            trace.exception(status, e);
+            throw e; // 예외를 반드시 던져주어야 한다.
+        }
     }
 }
