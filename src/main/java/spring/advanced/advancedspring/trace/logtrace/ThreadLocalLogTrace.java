@@ -1,9 +1,11 @@
 package spring.advanced.advancedspring.trace.logtrace;
 
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Component;
 import spring.advanced.advancedspring.trace.TraceId;
 import spring.advanced.advancedspring.trace.TraceStatus;
 
+@Component
 @Slf4j
 public class ThreadLocalLogTrace implements LogTrace {
 

@@ -1,0 +1,30 @@
+package spring.advanced.advancedspring.config.v1_proxy.concrete_proxy;
+
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import spring.advanced.advancedspring.app.v2.OrderRepositoryV2;
+import spring.advanced.advancedspring.trace.TraceStatus;
+import spring.advanced.advancedspring.trace.logtrace.LogTrace;
+
+@Slf4j
+@RequiredArgsConstructor
+public class OrderRepositoryConcreteProxy extends OrderRepositoryV2 {
+
+    private final OrderRepositoryV2 target;
+    private final LogTrace logTrace;
+
+    @Override
+    public void save(String itemId) {
+
+        TraceStatus status = null;
+
+        try {
+            status = logTrace.begin("OrderRepository().save");
+            target.save(itemId);
+            logTrace.end(status);
+        } catch (Exception e) {
+            logTrace.exception(status, e);
+            throw e;
+        }
+    }
+}
