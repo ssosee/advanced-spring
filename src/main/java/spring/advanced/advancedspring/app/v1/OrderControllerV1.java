@@ -1,28 +1,18 @@
 package spring.advanced.advancedspring.app.v1;
 
-import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
-import spring.advanced.advancedspring.trace.TraceStatus;
-import spring.advanced.advancedspring.trace.hellotrace.HelloTraceV1;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
-@RestController
-@RequiredArgsConstructor
-public class OrderControllerV1 {
-    private final OrderServiceV1 orderService;
-    private final HelloTraceV1 trace;
+//스프링은 @Controller 또는 @RequestMapping 이 있어야 스프링 컨트롤러로 인식
+@RequestMapping
+@ResponseBody
+public interface OrderControllerV1 {
 
     @GetMapping("/v1/request")
-    public String request(String itemId) {
-        TraceStatus status = null;
-        try {
-            status = trace.begin("OrderController.request()");
-            orderService.orderItem(itemId);
-            trace.end(status);
-            return "ok";
-        } catch (Exception e) {
-            trace.exception(status, e);
-            throw e; // 예외를 반드시 던져주어야 한다.
-        }
-    }
+    String request(@RequestParam("itemId") String itemId);
+
+    @GetMapping("/v1/no-log")
+    String noLog();
 }

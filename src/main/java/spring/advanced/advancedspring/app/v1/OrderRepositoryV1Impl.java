@@ -1,9 +1,7 @@
-package spring.advanced.advancedspring.app.v3;
+package spring.advanced.advancedspring.app.v1;
 
-import org.springframework.stereotype.Repository;
-
-@Repository
-public class OrderRepositoryV3 {
+public class OrderRepositoryV1Impl implements OrderRepositoryV1{
+    @Override
     public void save(String itemId) {
         if(itemId.equals("ex")) {
             throw new IllegalStateException("예외 발생!");
