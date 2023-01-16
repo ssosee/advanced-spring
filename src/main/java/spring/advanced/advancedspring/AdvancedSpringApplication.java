@@ -8,13 +8,17 @@ import spring.advanced.advancedspring.config.AppV1Config;
 import spring.advanced.advancedspring.config.AppV2Config;
 import spring.advanced.advancedspring.config.v1_proxy.ConcreteProxyConfig;
 import spring.advanced.advancedspring.config.v1_proxy.InterfaceProxyConfig;
+import spring.advanced.advancedspring.config.v2_dynamicproxy.DynamicProxyBasicConfig;
+import spring.advanced.advancedspring.config.v2_dynamicproxy.DynamicProxyFilterConfig;
 import spring.advanced.advancedspring.trace.logtrace.LogTrace;
 import spring.advanced.advancedspring.trace.logtrace.ThreadLocalLogTrace;
 
 //@Import(AppV1Config.class) // 강제로 빈 등록(컴포트넌 스캔 대상과 무관)
 //@Import({AppV1Config.class, AppV2Config.class}) // 강제로 빈 등록(컴포트넌 스캔 대상과 무관)
 //@Import(InterfaceProxyConfig.class)
-@Import(ConcreteProxyConfig.class)
+//@Import(ConcreteProxyConfig.class)
+//@Import(DynamicProxyBasicConfig.class)
+@Import(DynamicProxyFilterConfig.class)
 @SpringBootApplication(scanBasePackages = "spring.advanced.advancedspring.app") // 컴포넌트 스캔 대상 정의
 public class AdvancedSpringApplication {
 
