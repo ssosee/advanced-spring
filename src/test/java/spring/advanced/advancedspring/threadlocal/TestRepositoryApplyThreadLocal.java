@@ -9,6 +9,7 @@ public class TestRepositoryApplyThreadLocal {
         save(name);
         sleep(1000);
         find();
+        finish(); // 스레드 로컬 제거
     }
 
     public void save(String name) {
@@ -19,6 +20,11 @@ public class TestRepositoryApplyThreadLocal {
     public String find() {
         log.info("조회 name={}", nameLocal.get());
         return nameLocal.get();
+    }
+
+    public void finish() {
+        // 스레드 로컬 제거
+        nameLocal.remove();
     }
 
     public void sleep(int ms) {

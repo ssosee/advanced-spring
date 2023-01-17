@@ -62,6 +62,7 @@ public class ThreadLocalTest {
                 countDownLatch.countDown();
             }
         });
+
         thread1.setName("쿼카1 스레드");
         thread1.start();
 
