@@ -26,6 +26,5 @@ public class CglibTest {
         log.info("proxyClass={}", proxy.getClass());
 
         proxy.call();
-
     }
 }
