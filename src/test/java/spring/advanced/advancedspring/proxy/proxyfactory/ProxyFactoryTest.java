@@ -61,6 +61,8 @@ public class ProxyFactoryTest {
         ServiceInterface target = new ServiceInterfaceImpl();
         ProxyFactory proxyFactory = new ProxyFactory(target); // 프록시 생성시 target 정보를 넘긴다.
         proxyFactory.setProxyTargetClass(true); // 중요
+        // 해당 메서드 내부에서 아래 코드와 똑같은 다음 어드바이저가 생성된다.
+        // DefaultPointcutAdvisor(Pointcut.TRUE, new TimeAdvice());
         proxyFactory.addAdvice(new TimeAdvice());
 
         ServiceInterface proxy = (ServiceInterface) proxyFactory.getProxy();
