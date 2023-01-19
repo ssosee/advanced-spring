@@ -14,6 +14,7 @@ import spring.advanced.advancedspring.config.v3_proxyfactory.ProxyFactoryConfigV
 import spring.advanced.advancedspring.config.v3_proxyfactory.ProxyFactoryConfigV2;
 import spring.advanced.advancedspring.config.v4_postprocessor.BeanPostProcessorConfig;
 import spring.advanced.advancedspring.config.v5_autoproxy.AutoProxyConfig;
+import spring.advanced.advancedspring.config.v6_aop.AopConfig;
 import spring.advanced.advancedspring.trace.logtrace.LogTrace;
 import spring.advanced.advancedspring.trace.logtrace.ThreadLocalLogTrace;
 
@@ -26,7 +27,8 @@ import spring.advanced.advancedspring.trace.logtrace.ThreadLocalLogTrace;
 //@Import(ProxyFactoryConfigV1.class)
 //@Import(ProxyFactoryConfigV2.class)
 //@Import(BeanPostProcessorConfig.class)
-@Import(AutoProxyConfig.class)
+//@Import(AutoProxyConfig.class)
+@Import(AopConfig.class)
 @SpringBootApplication(scanBasePackages = "spring.advanced.advancedspring.app") // 컴포넌트 스캔 대상 정의
 public class AdvancedSpringApplication {
 
