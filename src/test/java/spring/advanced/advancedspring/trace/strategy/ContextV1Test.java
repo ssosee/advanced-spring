@@ -45,6 +45,8 @@ public class ContextV1Test {
         ContextV1 contextV1 = new ContextV1(strategy);
         contextV1.execute();
 
+        // 싱글톤 전략을 사용할 때는 동시성 이슈등 고려할 점이 많기 때문에
+        // Context를 새로 생성하고 그곳에 strategy를 주입하는것이 나은 선택일 수 있습니다.
         strategy = new StrategyLogic2();
         ContextV1 contextV2 = new ContextV1(strategy);
         contextV2.execute();

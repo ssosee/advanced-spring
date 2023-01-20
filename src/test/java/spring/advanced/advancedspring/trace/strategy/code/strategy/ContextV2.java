@@ -4,6 +4,7 @@ import lombok.extern.slf4j.Slf4j;
 
 /**
  * 전략을 파라미터로 전달 받는 방식
+ * 템플릿 콜백 패턴
  */
 @Slf4j
 public class ContextV2 {
