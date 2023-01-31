@@ -4,6 +4,7 @@ import org.aspectj.lang.annotation.Pointcut;
 
 public class PointCuts {
 
+    // spring.advanced.advancedspring.order 하위 패키지
     @Pointcut("execution(* spring.advanced.advancedspring.order..*(..))")
     public void allOrder(){}
 
