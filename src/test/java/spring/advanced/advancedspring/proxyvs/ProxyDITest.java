@@ -11,7 +11,8 @@ import spring.advanced.advancedspring.proxyvs.code.ProxyDIAspect;
 
 @Slf4j
 //@SpringBootTest(properties = {"spring.aop.proxy-target-class=false"}) // JDK 동적 프록시 우선 생성
-@SpringBootTest(properties = {"spring.aop.proxy-target-class=true"}) // CGLIB 동적 프록시 우선 생성
+//@SpringBootTest(properties = {"spring.aop.proxy-target-class=true"}) // CGLIB 동적 프록시 우선 생성
+@SpringBootTest
 @Import(ProxyDIAspect.class)
 public class ProxyDITest {
 
